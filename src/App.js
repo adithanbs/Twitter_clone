@@ -1,4 +1,3 @@
-import React from 'react'
 import Sidebar from "./Sidebar.js"
 import Feed from "./Feed"
 import Widgets from "./Widgets"

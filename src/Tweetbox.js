@@ -3,17 +3,17 @@ import { Avatar } from '@material-ui/core'
 import { Button } from '@material-ui/core';
 import db from "./firebase";
 import firebase from "firebase"
-
 import "./Tweetbox.css"
-const Tweetbox = () => {
+
+function Tweetbox  ()  {
 
 const [tweetMessage,setTweetMessage] = useState("");
 const [tweetImage,setTweetImage] = useState("");
 
-const sendTweet = (e) => {
+const sendTweet = e => {
     e.preventDefault();
 
-    db.collection("post").add({
+    db.collection("posts").add({
         displayName:"codeWithadi",
         timestamp: firebase.firestore.FieldValue.
         serverTimestamp(),
@@ -30,7 +30,7 @@ const sendTweet = (e) => {
     return (
         <div className="tweetBox">
         <from>
-            <div className="tweetBox_input">
+         <div className="tweetBox_input">
             <Avatar alt="Remy Sharp" src="https://twitter.com/Adithan59722508/photo" />
            <input 
            onChange = {(e) => setTweetMessage(e.target.value)}
@@ -41,7 +41,7 @@ const sendTweet = (e) => {
             onChange = {(e) =>setTweetImage(e.target.value)}
             value = {tweetImage}
             className="tweetBox_imageInput"
-            placeholder="optional: Enter image URL"/>
+            placeholder="optional: Enter Image URL"/>
             <Button onClick={sendTweet} className="tweetBox_tweetButton" >Tweet</Button>
         </from>
             

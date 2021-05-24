@@ -1,22 +1,25 @@
-import React from "react";
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
+import React, {forwardRef} from 'react'
 import "./Post.css";
-const Post = ({displayName,username,verified,text,image,avatar}) => {
+const Post = forwardRef (
+  ({displayName,username,verified,text,image,avatar},
+    ref ) => {
   return (
-    <div className="post">
+    <div className="post" ref={ref} >
       <div className="post_avatar">
-        <Avatar src={avatar}/>
+        <Avatar
+         src={avatar}/>
       </div>
       <div className="post_body">
         <div className="post_header">
           <div className="post_headerText">
           <h3>
-            DisplayName
+            {displayName}
             <span className="post_headerSpecial">
              {verified && <VerifiedUserIcon className="post_badge" />
               } @ {username}
@@ -24,11 +27,11 @@ const Post = ({displayName,username,verified,text,image,avatar}) => {
           </h3>
           </div>
           <div className="post_headerDescription">
-            <p>This is message</p>
+            <p>{text}</p>
           </div>
         </div>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1jNp3uEFUzn7_iBUKq0LCoO9gU7aPhaKJw&usqp=CAU"
+          src={image}
           alt=""
         />
         <div className="post_footer">
@@ -40,6 +43,6 @@ const Post = ({displayName,username,verified,text,image,avatar}) => {
       </div>
     </div>
   );
-};
+})
 
 export default Post;
